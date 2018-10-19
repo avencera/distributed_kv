@@ -14,7 +14,6 @@ defmodule DistributedKV do
 
   2. Create `MyApp.Registry` and implement functions that handles inserting, dumping and retrieving 
 
-  Note: @name should be the name you provided in supervision tree (ex: `MyApp.Registry`)
 
   ```elixir
   defmodule MyApp.Registry do
@@ -37,5 +36,7 @@ defmodule DistributedKV do
   end
 
   ```
+
+  Note: `@name` should be the name you provided in supervision tree (ex: `MyApp.Registry`)
   """
 end

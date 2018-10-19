@@ -29,8 +29,6 @@ Supervisor.child_spec({DistributedKV.Server, MyApp.Registry},
 
 2. Create `MyApp.Registry` and implement functions that handles inserting, dumping and retrieving 
 
-Note: @name should be the name you provided in supervision tree (ex: `MyApp.Registry`)
-
 ```elixir
 defmodule MyApp.Registry do
   @name __MODULE__
@@ -52,3 +50,4 @@ defmodule MyApp.Registry do
 end
 
 ```
+Note: `@name` should be the name you provided in supervision tree (ex: `MyApp.Registry`)
