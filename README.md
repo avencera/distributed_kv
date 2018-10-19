@@ -1,5 +1,7 @@
 # DistributedKV
 
+** Expirement / Learning ** 
+
 ** WORK IN PROGRESS **
 
 A simple genserver + ets + pg2 that lets you create a distributed kv
