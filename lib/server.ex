@@ -39,21 +39,10 @@ defmodule DistributedKV.Server do
   end
 
   def refresh(name) do
-    members =
-      name
-      |> :pg2.get_members()
-      |> Enum.filter(fn pid -> pid != self() end)
-
-    if Enum.count(members) > 0 do
-      pid = Enum.random(members)
-
+    for pid <- :pg2.get_members(name), pid != self() do
       for {key, value} <- GenServer.call(pid, :dump) do
         :ets.insert(name, {key, value})
       end
-
-      :ok
-    else
-      :error
     end
   end
 
