@@ -4,7 +4,7 @@ defmodule DistributedKV do
 
   ## Usage
 
-  1. Start one or many instances of the DistributedKV in the supervision tree, ex: 
+  1. Start one or many instances of the DistributedKV in the supervision tree, ex:
 
   ```elixir
   Supervisor.child_spec({DistributedKV.Server, MyApp.Registry},
@@ -12,7 +12,7 @@ defmodule DistributedKV do
   ),
   ```
 
-  2. Create `MyApp.Registry` and implement functions that handles inserting, dumping and retrieving 
+  2. Create `MyApp.Registry` and implement functions that handles inserting, dumping, deleting and retrieving
 
 
   ```elixir
@@ -25,6 +25,10 @@ defmodule DistributedKV do
 
     def register(key, identifier) do
       GenServer.cast(@name, {:insert, key, identifier})
+    end
+
+    def de_register(key) do
+      GenServer.cast(@name, {:delete, key})
     end
 
     def retrieve() do
