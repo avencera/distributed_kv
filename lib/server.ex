@@ -1,6 +1,10 @@
 defmodule DistributedKV.Server do
   use GenServer
 
+  def child_spec(opts) do
+    Supervisor.child_spec({DistributedKV.Server, opts[:name]}, id: opts[:name])
+  end
+
   def start_link(name) do
     GenServer.start_link(__MODULE__, name, name: name)
   end
